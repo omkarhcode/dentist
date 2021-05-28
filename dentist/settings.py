@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'dentist.urls'
@@ -127,6 +131,8 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Gmail will only work if you have allowed "Less secure apps" and display unlock captcha 
 # https://myaccount.google.com/lesssecureapps
 # https://accounts.google.com/b/0/DisplayUnlockCaptcha
@@ -141,5 +147,4 @@ EMAIL_HOST_PASSWORD = '******'
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False 
 
-
-
+django_heroku.settings(locals())
