@@ -127,7 +127,19 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
+# Gmail will only work if you have allowed "Less secure apps" and display unlock captcha 
+# https://myaccount.google.com/lesssecureapps
+# https://accounts.google.com/b/0/DisplayUnlockCaptcha
 
+# OR use App password which needs 2 factor authentication. - https://support.google.com/accounts/answer/185833?hl=en
+
+# Email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'omkarhcode@gmail.com'
+EMAIL_HOST_PASSWORD = '******'
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False 
 
 
 

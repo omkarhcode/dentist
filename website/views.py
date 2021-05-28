@@ -25,9 +25,33 @@ def contact(request):
 		user_message = request.POST['message']
 
 		# Send an email
-		send_mail('Email from '+user_name,user_message, user_email, ['omkarh.code@gmail.com'])
+		send_mail('Email from '+user_name,user_message, user_email, ['omkarhcode@gmail.com'])
 
 		return render(request, 'contact.html', {'user_name': user_name})
 	else:
 		return render(request, 'contact.html', {})
+
+
+def appointment(request):
+	if request.method == "POST":
+		firstname = request.POST['fname']
+		lastname = request.POST['lname']
+		dateofvisit = request.POST['date']
+		customeremail = request.POST['email']
+		treatment = request.POST['treatment']
+		additionalnote = request.POST['note']
+
+		# Send an email
+		# send_mail('Email from '+user_name,user_message, user_email, ['omkarhcode@gmail.com'])
+
+		return render(request, 'appointment.html', {			
+			'firstname': firstname,
+			'lastname': lastname,
+			'dateofvisit': dateofvisit,
+			'customeremail': customeremail,
+			'treatment': treatment,
+			'additionalnote': additionalnote,
+			})
+	else:
+		return render(request, 'home.html', {})
 

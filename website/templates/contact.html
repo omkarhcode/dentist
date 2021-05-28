@@ -15,6 +15,15 @@
 </div>
 <div class="site-section bg-light">
     <div class="container">
+        {% if user_name %}
+        <div>
+            <center>
+                <h2>Thanks {{user_name}},</h2>
+                <p>We have received your email and will respond shortly...</p>
+            </center>
+            <br>
+        </div>
+        {% endif %}
         <div class="row">
             <div class="col-md-12 col-lg-6 mb-5 mb-lg-0">
                 <h2 class="site-heading text-black mb-5"><strong>Appointment</strong></h2>
@@ -65,7 +74,7 @@
             </div>
             <!-- Contact form -->
             <div class="col-md-12 col-lg-6">
-                <h2 class="site-heading text-black mb-5">Say <strong>Hello</strong></h2> to - {{user_name}}
+                <h2 class="site-heading text-black mb-5">Say <strong>Hello</strong></h2>
                 <form action="{% url 'contact' %}" method="post" class="p-5 bg-white">
                     {% csrf_token %}
                     <div class="row form-group">
